@@ -13,6 +13,51 @@ O algoritmo de Karatsuba é baseado na observação de que dois números de n d�
 
 <img width="1024" height="1024" alt="Karatsuba_multiplication svg" src="https://github.com/user-attachments/assets/249fe4a8-4ee2-4411-a354-7aa14034804e" />
 
+
+A imagem ilustra o **algoritmo de multiplicação de Karatsuba**, um método eficiente de "dividir para conquistar" para multiplicar números grandes.
+
+### Ideia Principal
+
+Em vez de usar o método de multiplicação tradicional, que para dois números de `n` dígitos requer `n²` multiplicações de um dígito, Karatsuba reduz esse número para aproximadamente `n^1.585`.
+
+A chave é transformar a multiplicação de dois números grandes em três multiplicações de números menores, mais algumas adições e subtrações.
+
+### Como Funciona
+
+1.  **Dividir:** Um número grande é dividido em duas partes. Por exemplo, `1234` pode ser visto como `12 * 100 + 34`. A fórmula geral para o produto de dois números `(az + b)` e `(cz + d)` é:
+    `ac·z² + (ad + bc)·z + bd`
+
+2.  **Calcular três produtos:** O truque de Karatsuba é calcular o termo do meio (`ad + bc`) de forma inteligente, realizando apenas três multiplicações no total:
+    * `ac` (o produto das partes altas)
+    * `bd` (o produto das partes baixas)
+    * `(a+b)(c+d)`
+
+3.  **Subtrair e Combinar:** O termo do meio é obtido subtraindo os dois primeiros produtos do terceiro: `(ad + bc) = (a+b)(c+d) - ac - bd`.
+
+### Exemplo: `1234 × 567`
+
+A imagem demonstra o cálculo de `1234 × 567` tratando-os como `(12·100 + 34) × (05·100 + 67)`:
+
+* **Valores:**
+    * `a = 12`, `b = 34`
+    * `c = 05`, `d = 67`
+    * Base `z = 100`
+
+* **Três Multiplicações:**
+    1.  `ac = 12 × 5 = 60` (Diagrama A)
+    2.  `bd = 34 × 67 = 2278` (Diagrama B)
+    3.  `(a+b)(c+d) = (12+34)(5+67) = 46 × 72 = 3312` (Diagrama C)
+
+* **Termo do meio:** `3312 - 60 - 2278 = 974`
+
+* **Resultado Final:** Os valores são combinados com as potências da base `z=100`.
+    * `60 · (100)² = 600000`
+    * `974 · (100)¹ = 97400`
+    * `2278`
+    * **Soma:** `600000 + 97400 + 2278 = 699678`
+
+Os diagramas (A), (B) e (C) na parte inferior mostram que cada uma dessas multiplicações menores também é resolvida usando o mesmo método Karatsuba recursivamente.
+
 ## Descrição do Projeto
 
 O algoritmo implementado em `main.py` utiliza a abordagem recursiva do método de Karatsuba para realizar multiplicações eficientes. A lógica do algoritmo pode ser explicada linha por linha:
