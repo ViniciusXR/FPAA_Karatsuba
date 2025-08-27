@@ -11,6 +11,8 @@ O **Algoritmo de Karatsuba** é um método eficiente para multiplicação de nú
 
 O algoritmo de Karatsuba é baseado na observação de que dois números de n dígitos podem ser multiplicados usando no máximo 3 multiplicações de números com n/2 dígitos, ao invés de 4 multiplicações como no método tradicional. Esta redução no número de operações leva a uma melhoria significativa na eficiência para números grandes.
 
+<img width="1024" height="1024" alt="Karatsuba_multiplication svg" src="https://github.com/user-attachments/assets/249fe4a8-4ee2-4411-a354-7aa14034804e" />
+
 ## Descrição do Projeto
 
 O algoritmo implementado em `main.py` utiliza a abordagem recursiva do método de Karatsuba para realizar multiplicações eficientes. A lógica do algoritmo pode ser explicada linha por linha:
