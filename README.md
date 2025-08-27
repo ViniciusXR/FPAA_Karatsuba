@@ -142,14 +142,14 @@ O grafo de fluxo da função `karatsuba(x, y)` pode ser representado pelos segui
 8. **N8**: Fim da função
 
 **Arestas:**
-1. N1 → N2
-2. N2 → N3 (condição verdadeira)
-3. N2 → N4 (condição falsa)
-4. N3 → N8
-5. N4 → N5
-6. N5 → N6
-7. N6 → N7
-8. N7 → N8
+1. N1 → N2 Início da função para a verificação do if
+2. N2 → N3 Se o if retornar uma condição verdadeira
+3. N2 → N4 Se o if retornar uma condição falsa
+4. N3 → N8 Retorno do valor no caso base
+5. N4 → N5 Calcula n e m e prossegue para a divisão dos números
+6. N5 → N6 Faz a divisão dos números e segue para as chamadas recursivas
+7. N6 → N7 Faz as três chamadas recursivas e segue para combinar o valor
+8. N7 → N8 Da combinação dos valores para o retorno final
 
 #### Cálculo da Complexidade Ciclomática
 
